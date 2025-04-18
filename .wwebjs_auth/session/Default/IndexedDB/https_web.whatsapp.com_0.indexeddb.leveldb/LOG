@@ -1,0 +1,19 @@
+2025/04/18-11:27:09.247 2b84 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/18-11:27:09.248 2b84 Recovering log #273
+2025/04/18-11:27:09.285 2b84 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/000273.log 
+2025/04/18-11:27:11.811 2b84 Level-0 table #281: started
+2025/04/18-11:27:11.823 2b84 Level-0 table #281: 151275 bytes OK
+2025/04/18-11:27:11.824 2b84 Delete type=0 #273
+2025/04/18-11:27:11.832 2b84 Manual compaction at level-0 from '\x00\x1d\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x1e\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/04/18-11:27:15.219 20e8 Compacting 1@1 + 4@2 files
+2025/04/18-11:27:15.361 20e8 Generated table #282@1: 51547 keys, 2212807 bytes
+2025/04/18-11:27:15.460 20e8 Generated table #283@1: 18519 keys, 2189500 bytes
+2025/04/18-11:27:15.582 20e8 Generated table #284@1: 64001 keys, 2213008 bytes
+2025/04/18-11:27:15.604 20e8 Generated table #285@1: 14014 keys, 296931 bytes
+2025/04/18-11:27:15.604 20e8 Compacted 1@1 + 4@2 files => 6912246 bytes
+2025/04/18-11:27:15.606 20e8 compacted to: files[ 0 0 4 0 0 0 0 ]
+2025/04/18-11:27:15.606 20e8 Delete type=2 #275
+2025/04/18-11:27:15.606 20e8 Delete type=2 #276
+2025/04/18-11:27:15.606 20e8 Delete type=2 #277
+2025/04/18-11:27:15.606 20e8 Delete type=2 #278
+2025/04/18-11:27:15.606 20e8 Delete type=2 #281
