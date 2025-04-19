@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@whiskeysockets/baileys": "^6.5.0",
+    "better-sqlite3": "^11.9.1",
     "express": "^5.1.0",
     "qrcode-terminal": "^0.12.0",
     "sequelize": "^6.37.7",

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Ringkasan Transaksi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 16px;
+ 
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            position: relative;
+        }
+
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 3px;
+            background-color: #3b82f6;
+            border-radius: 2px;
+        }
+
+        .transaksi {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card strong {
+            display: block;
+            margin-bottom: 8px;
+            color: #6b7280;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .amount {
+            font-size: 1.7rem;
+            font-weight: 700;
+            margin-top: 5px;
+        }
+
+        .pemasukan { color: #16a34a; }
+        .pengeluaran { color: #dc2626; }
+        .saldo { color: #0ea5e9; }
+
+        .table-container {
+            overflow-x: auto;
+            border-radius: 12px;
+            background: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        thead {
+            background-color: #1f2937;
+        }
+
+        th {
+            color: white;
+            text-align: left;
+            padding: 16px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #e5e7eb;
+            font-size: 0.95rem;
+        }
+
+        tbody tr:hover {
+            background-color: #f9fafb;
+        }
+
+        .badge {
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            display: inline-block;
+            font-weight: 600;
+        }
+
+        .badge-pemasukan {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-pengeluaran {
+            background-color: #fee2e2;
+            color: #991b1b;
+        }
+
+        .date {
+            color: #6b7280;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5rem;
+            }
+
+            .amount {
+                font-size: 1.5rem;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+
+            .transaksi {
+                gap: 15px;
+            }
+        }
+
+          /* ... existing styles ... */
+         .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        .btn-edit, .btn-delete {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+        .btn-edit { background-color: #059669; }
+        .btn-delete { background-color: #dc2626; }
+        .edit-form {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f9fafb;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .edit-form input, .edit-form select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Ringkasan Transaksi</h1>
+
+        <div class="transaksi">
+            <div class="card">
+                <strong>Total Pemasukan</strong>
+                <div class="amount pemasukan">Rp {{totalPemasukan}}</div>
+            </div>
+            <div class="card">
+                <strong>Total Pengeluaran</strong>
+                <div class="amount pengeluaran">Rp {{totalPengeluaran}}</div>
+            </div>
+            <div class="card">
+                <strong>Saldo</strong>
+                <div class="amount saldo">Rp {{saldo}}</div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jenis</th>
+                        <th>Kategori</th>
+                        <th>Jumlah</th>
+                        <th>Waktu</th>
+                        <th>Catatan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{transaksiRows}}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Edit Form -->
+        <div id="editForm" class="edit-form">
+            <h2>Edit Transaksi</h2>
+            <input type="hidden" id="editId">
+            <label for="editTipe">Jenis:</label>
+            <select id="editTipe">
+                <option value="pemasukan">Pemasukan</option>
+                <option value="pengeluaran">Pengeluaran</option>
+            </select>
+            <label for="editJumlah">Jumlah:</label>
+            <input type="number" id="editJumlah">
+            <label for="editKategori">Kategori:</label>
+            <input type="text" id="editKategori">
+            <label for="editCatatan">Catatan:</label>
+            <input type="text" id="editCatatan">
+            <button onclick="submitEditForm()">Simpan</button>
+            <button onclick="closeEditForm()">Batal</button>
+        </div>
+    </div>
+    <script>
+        function openEditForm(id, tipe, jumlah, kategori, catatan) {
+            document.getElementById('editId').value = id;
+            document.getElementById('editTipe').value = tipe;
+            document.getElementById('editJumlah').value = jumlah;
+            document.getElementById('editKategori').value = kategori;
+            document.getElementById('editCatatan').value = catatan;
+            document.getElementById('editForm').style.display = 'block';
+        }
+
+        function closeEditForm() {
+            document.getElementById('editForm').style.display = 'none';
+        }
+
+        function submitEditForm() {
+            const id = document.getElementById('editId').value;
+            const updatedData = {
+                tipe: document.getElementById('editTipe').value,
+                jumlah: parseInt(document.getElementById('editJumlah').value),
+                kategori: document.getElementById('editKategori').value,
+                catatan: document.getElementById('editCatatan').value
+            };
+            updateTransaction(id, updatedData);
+            closeEditForm();
+        }
+
+        function editTransaction(id) {
+            fetch(`/api/transaksi/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    openEditForm(data.id, data.tipe, data.jumlah, data.kategori, data.catatan);
+                })
+                .catch(error => console.error('Error fetching transaction data:', error));
+        }
+
+        function updateTransaction(id, updatedData) {
+            fetch(`/api/transaksi/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert(data.message);
+                location.reload(); // Reload the page to reflect changes
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function deleteTransaction(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus transaksi ini?')) {
+                fetch(`/api/transaksi/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    location.reload(); // Reload the page to reflect changes
+                })
+                .catch(error => console.error('Error:', error));
+            }
+        }
+    </script>
+</body>
+</html>

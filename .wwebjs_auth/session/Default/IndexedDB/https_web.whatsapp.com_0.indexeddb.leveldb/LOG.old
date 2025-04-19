@@ -1,0 +1,27 @@
+2025/04/19-00:00:38.855 6650 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/19-00:00:38.856 6650 Recovering log #1199
+2025/04/19-00:00:38.921 6650 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001199.log 
+2025/04/19-00:00:41.347 6554 Level-0 table #1211: started
+2025/04/19-00:00:41.361 6554 Level-0 table #1211: 275883 bytes OK
+2025/04/19-00:00:41.362 6554 Delete type=0 #1199
+2025/04/19-00:00:41.362 6554 Manual compaction at level-0 from '\x00Y\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00Z\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/04/19-00:00:44.555 436c Compacting 1@1 + 8@2 files
+2025/04/19-00:00:44.724 436c Generated table #1212@1: 87616 keys, 2237853 bytes
+2025/04/19-00:00:44.802 436c Generated table #1213@1: 36394 keys, 2216305 bytes
+2025/04/19-00:00:44.894 436c Generated table #1214@1: 36060 keys, 2196223 bytes
+2025/04/19-00:00:44.949 436c Generated table #1215@1: 8055 keys, 2163696 bytes
+2025/04/19-00:00:45.037 436c Generated table #1216@1: 21627 keys, 2168819 bytes
+2025/04/19-00:00:45.165 436c Generated table #1217@1: 61322 keys, 2196678 bytes
+2025/04/19-00:00:45.341 436c Generated table #1218@1: 113341 keys, 2266205 bytes
+2025/04/19-00:00:45.450 436c Generated table #1219@1: 74263 keys, 1482103 bytes
+2025/04/19-00:00:45.450 436c Compacted 1@1 + 8@2 files => 16927882 bytes
+2025/04/19-00:00:45.451 436c compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/04/19-00:00:45.451 436c Delete type=2 #1201
+2025/04/19-00:00:45.451 436c Delete type=2 #1202
+2025/04/19-00:00:45.451 436c Delete type=2 #1203
+2025/04/19-00:00:45.451 436c Delete type=2 #1204
+2025/04/19-00:00:45.451 436c Delete type=2 #1205
+2025/04/19-00:00:45.452 436c Delete type=2 #1206
+2025/04/19-00:00:45.452 436c Delete type=2 #1207
+2025/04/19-00:00:45.452 436c Delete type=2 #1208
+2025/04/19-00:00:45.452 436c Delete type=2 #1211
