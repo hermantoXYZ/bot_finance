@@ -2,7 +2,16 @@ function getDateRange(period) {
     const now = new Date();
     const startDate = new Date();
     
-    if (period === 'minggu ini') {
+    if (period === 'hari ini' || period === 'riwayat hari ini') {
+        // Start and end date are the same day (today)
+        startDate.setHours(0, 0, 0, 0);
+    } else if (period === 'kemarin' || period === 'riwayat kemarin') {
+        // Yesterday
+        startDate.setDate(now.getDate() - 1);
+        startDate.setHours(0, 0, 0, 0);
+        now.setDate(now.getDate() - 1);
+        now.setHours(23, 59, 59, 999);
+    } else if (period === 'minggu ini' || period === 'riwayat minggu ini') {
         startDate.setDate(now.getDate() - now.getDay()); // Start of week (Sunday)
     } else if (period === 'bulan ini') {
         startDate.setDate(1); // Start of current month
@@ -18,8 +27,12 @@ function getDateRange(period) {
         now.setFullYear(parseInt(period), 11, 31); // December 31st of specified year
     }
     
-    startDate.setHours(0, 0, 0, 0);
-    now.setHours(23, 59, 59, 999);
+    // Set time to beginning of day for start date and end of day for end date
+    // if not already set in the conditions above
+    if (period !== 'kemarin' && period !== 'riwayat kemarin') {
+        startDate.setHours(0, 0, 0, 0);
+        now.setHours(23, 59, 59, 999);
+    }
     
     return { startDate, endDate: now };
 }

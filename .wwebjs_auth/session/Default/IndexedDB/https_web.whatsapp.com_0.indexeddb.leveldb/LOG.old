@@ -1,27 +1,27 @@
-2025/04/19-00:00:38.855 6650 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/04/19-00:00:38.856 6650 Recovering log #1199
-2025/04/19-00:00:38.921 6650 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001199.log 
-2025/04/19-00:00:41.347 6554 Level-0 table #1211: started
-2025/04/19-00:00:41.361 6554 Level-0 table #1211: 275883 bytes OK
-2025/04/19-00:00:41.362 6554 Delete type=0 #1199
-2025/04/19-00:00:41.362 6554 Manual compaction at level-0 from '\x00Y\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00Z\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/19-00:00:44.555 436c Compacting 1@1 + 8@2 files
-2025/04/19-00:00:44.724 436c Generated table #1212@1: 87616 keys, 2237853 bytes
-2025/04/19-00:00:44.802 436c Generated table #1213@1: 36394 keys, 2216305 bytes
-2025/04/19-00:00:44.894 436c Generated table #1214@1: 36060 keys, 2196223 bytes
-2025/04/19-00:00:44.949 436c Generated table #1215@1: 8055 keys, 2163696 bytes
-2025/04/19-00:00:45.037 436c Generated table #1216@1: 21627 keys, 2168819 bytes
-2025/04/19-00:00:45.165 436c Generated table #1217@1: 61322 keys, 2196678 bytes
-2025/04/19-00:00:45.341 436c Generated table #1218@1: 113341 keys, 2266205 bytes
-2025/04/19-00:00:45.450 436c Generated table #1219@1: 74263 keys, 1482103 bytes
-2025/04/19-00:00:45.450 436c Compacted 1@1 + 8@2 files => 16927882 bytes
-2025/04/19-00:00:45.451 436c compacted to: files[ 0 0 8 0 0 0 0 ]
-2025/04/19-00:00:45.451 436c Delete type=2 #1201
-2025/04/19-00:00:45.451 436c Delete type=2 #1202
-2025/04/19-00:00:45.451 436c Delete type=2 #1203
-2025/04/19-00:00:45.451 436c Delete type=2 #1204
-2025/04/19-00:00:45.451 436c Delete type=2 #1205
-2025/04/19-00:00:45.452 436c Delete type=2 #1206
-2025/04/19-00:00:45.452 436c Delete type=2 #1207
-2025/04/19-00:00:45.452 436c Delete type=2 #1208
-2025/04/19-00:00:45.452 436c Delete type=2 #1211
+2025/04/19-15:03:12.010 1b38 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/19-15:03:12.011 1b38 Recovering log #1577
+2025/04/19-15:03:12.049 1b38 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001577.log 
+2025/04/19-15:03:14.393 2e1c Level-0 table #1589: started
+2025/04/19-15:03:14.404 2e1c Level-0 table #1589: 193292 bytes OK
+2025/04/19-15:03:14.406 2e1c Delete type=0 #1577
+2025/04/19-15:03:14.408 2e1c Manual compaction at level-0 from '\x00n\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00o\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/04/19-15:03:17.094 2e1c Compacting 1@1 + 8@2 files
+2025/04/19-15:03:17.237 2e1c Generated table #1590@1: 88594 keys, 2239341 bytes
+2025/04/19-15:03:17.357 2e1c Generated table #1591@1: 61110 keys, 2246197 bytes
+2025/04/19-15:03:17.455 2e1c Generated table #1592@1: 40846 keys, 2198149 bytes
+2025/04/19-15:03:17.512 2e1c Generated table #1593@1: 10155 keys, 2162059 bytes
+2025/04/19-15:03:17.657 2e1c Generated table #1594@1: 29648 keys, 2202940 bytes
+2025/04/19-15:03:17.722 2e1c Generated table #1595@1: 28639 keys, 2154685 bytes
+2025/04/19-15:03:17.865 2e1c Generated table #1596@1: 113263 keys, 2266214 bytes
+2025/04/19-15:03:18.048 2e1c Generated table #1597@1: 113049 keys, 2259118 bytes
+2025/04/19-15:03:18.048 2e1c Compacted 1@1 + 8@2 files => 17728703 bytes
+2025/04/19-15:03:18.049 2e1c compacted to: files[ 0 0 8 0 0 0 0 ]
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1579
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1580
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1581
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1582
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1583
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1584
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1585
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1586
+2025/04/19-15:03:18.049 2e1c Delete type=2 #1589

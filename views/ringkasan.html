@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
+          * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -24,7 +24,6 @@
             margin: auto;
             padding: 30px;
             border-radius: 16px;
- 
         }
 
         h1 {
@@ -169,8 +168,7 @@
             }
         }
 
-          /* ... existing styles ... */
-         .action-buttons {
+        .action-buttons {
             display: flex;
             gap: 10px;
         }
@@ -198,10 +196,30 @@
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+
+            #modalEdit {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        max-width: 500px;
+        width: 90%;
+        z-index: 1000;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .blur-background {
+            filter: blur(5px);
+            pointer-events: none;
+        }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="mainContent">
         <h1>Ringkasan Transaksi</h1>
 
         <div class="transaksi">
@@ -236,77 +254,84 @@
                 </tbody>
             </table>
         </div>
-
-        <!-- Edit Form -->
-        <div id="editForm" class="edit-form">
-            <h2>Edit Transaksi</h2>
-            <input type="hidden" id="editId">
-            <label for="editTipe">Jenis:</label>
-            <select id="editTipe">
-                <option value="pemasukan">Pemasukan</option>
-                <option value="pengeluaran">Pengeluaran</option>
-            </select>
-            <label for="editJumlah">Jumlah:</label>
-            <input type="number" id="editJumlah">
-            <label for="editKategori">Kategori:</label>
-            <input type="text" id="editKategori">
-            <label for="editCatatan">Catatan:</label>
-            <input type="text" id="editCatatan">
-            <button onclick="submitEditForm()">Simpan</button>
-            <button onclick="closeEditForm()">Batal</button>
-        </div>
     </div>
+    <!-- Modal Edit -->
+<div id="modalEdit" class="edit-form" style="display: none;">
+    <h3>Edit Transaksi</h3>
+    <input type="hidden" id="edit-id">
+    <label for="edit-tipe">Tipe</label>
+    <select id="edit-tipe">
+        <option value="pemasukan">Pemasukan</option>
+        <option value="pengeluaran">Pengeluaran</option>
+    </select>
+
+    <label for="edit-jumlah">Jumlah</label>
+    <input type="number" id="edit-jumlah">
+
+    <label for="edit-kategori">Kategori</label>
+    <input type="text" id="edit-kategori">
+
+    <label for="edit-catatan">Catatan</label>
+    <input type="text" id="edit-catatan">
+
+    <button onclick="submitEdit()" style="background-color:#2563eb;color:white;padding:8px 16px;border:none;border-radius:4px;">Simpan</button>
+    <button onclick="closeModal()" style="margin-left:10px;background-color:#6b7280;color:white;padding:8px 16px;border:none;border-radius:4px;">Batal</button>
+</div>
+<script>
+    function editTransaction(id) {
+        const row = document.querySelector(`button[onclick="editTransaction(${id})"]`).closest('tr');
+        const tipe = row.children[0].innerText.trim();
+        const kategori = row.children[1].innerText.trim();
+        const jumlah = row.children[2].innerText.replace(/[^\d]/g, '');
+        const catatan = row.children[4].innerText.trim();
+
+        document.getElementById('edit-id').value = id;
+        document.getElementById('edit-tipe').value = tipe;
+        document.getElementById('edit-jumlah').value = jumlah;
+        document.getElementById('edit-kategori').value = kategori;
+        document.getElementById('edit-catatan').value = catatan;
+
+        document.getElementById('modalEdit').style.display = 'block';
+        document.getElementById('mainContent').classList.add('blur-background');
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    function closeModal() {
+        document.getElementById('modalEdit').style.display = 'none';
+        document.getElementById('mainContent').classList.remove('blur-background');
+    }
+
+    function submitEdit() {
+        const id = document.getElementById('edit-id').value;
+        const tipe = document.getElementById('edit-tipe').value;
+        const jumlah = parseInt(document.getElementById('edit-jumlah').value);
+        const kategori = document.getElementById('edit-kategori').value;
+        const catatan = document.getElementById('edit-catatan').value;
+
+        console.log('Submitting edit:', { id, tipe, jumlah, kategori, catatan });
+
+        fetch(`/api/transaksi/${id}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tipe, jumlah, kategori, catatan })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Transaksi berhasil diperbarui');
+                location.reload();
+            } else {
+                alert('Gagal memperbarui transaksi');
+                console.error('Failed to update transaction:', response.statusText);
+            }
+        })
+        .catch(error => {
+            console.error('Error during update:', error);
+            alert('Terjadi kesalahan');
+        });
+    }
+</script>
+
     <script>
-        function openEditForm(id, tipe, jumlah, kategori, catatan) {
-            document.getElementById('editId').value = id;
-            document.getElementById('editTipe').value = tipe;
-            document.getElementById('editJumlah').value = jumlah;
-            document.getElementById('editKategori').value = kategori;
-            document.getElementById('editCatatan').value = catatan;
-            document.getElementById('editForm').style.display = 'block';
-        }
-
-        function closeEditForm() {
-            document.getElementById('editForm').style.display = 'none';
-        }
-
-        function submitEditForm() {
-            const id = document.getElementById('editId').value;
-            const updatedData = {
-                tipe: document.getElementById('editTipe').value,
-                jumlah: parseInt(document.getElementById('editJumlah').value),
-                kategori: document.getElementById('editKategori').value,
-                catatan: document.getElementById('editCatatan').value
-            };
-            updateTransaction(id, updatedData);
-            closeEditForm();
-        }
-
-        function editTransaction(id) {
-            fetch(`/api/transaksi/${id}`)
-                .then(response => response.json())
-                .then(data => {
-                    openEditForm(data.id, data.tipe, data.jumlah, data.kategori, data.catatan);
-                })
-                .catch(error => console.error('Error fetching transaction data:', error));
-        }
-
-        function updateTransaction(id, updatedData) {
-            fetch(`/api/transaksi/${id}`, {
-                method: 'PATCH',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedData)
-            })
-            .then(response => response.json())
-            .then(data => {
-                alert(data.message);
-                location.reload(); // Reload the page to reflect changes
-            })
-            .catch(error => console.error('Error:', error));
-        }
-
         function deleteTransaction(id) {
             if (confirm('Apakah Anda yakin ingin menghapus transaksi ini?')) {
                 fetch(`/api/transaksi/${id}`, {

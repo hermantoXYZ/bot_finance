@@ -28,19 +28,14 @@ app.get('/api/transaksi/id/:id', (req, res) => {
     if (transaksi) {
         res.json(transaksi);
     } else {
-        res.status(404).json({ message: 'Transaksi tidak ditemukan' });
+        res.status(404).json({ message: 'Transaksi tidak ditemukanss' });
     }
 });
 
-
+// Update/edit data di front end ringkasan
 app.patch('/api/transaksi/:id', (req, res) => {
     const { id } = req.params;
     const { tipe, jumlah, kategori, catatan } = req.body;
-
-    console.log('PATCH /api/transaksi/:id');
-    console.log('Body:', req.body);
-    console.log('ID:', id);
-
     const stmt = db.prepare(`
         UPDATE transaksi
         SET tipe = ?, jumlah = ?, kategori = ?, catatan = ?
@@ -107,7 +102,7 @@ client.on('message', async (msg) => {
         }
 
         const query = `
-            SELECT tipe, jumlah, kategori, waktu 
+            SELECT tipe, jumlah, kategori, waktu, catatan
             FROM transaksi 
             WHERE nomor = ? AND waktu BETWEEN ? AND ?
             ORDER BY waktu DESC
@@ -134,7 +129,8 @@ client.on('message', async (msg) => {
             const emoji = t.tipe === 'pemasukan' ? '📥' : '📤';
             response += `${i + 1}. ${emoji} ${date}\n`;
             response += `   💰 Rp${(t.jumlah || 0).toLocaleString('id-ID')}\n`;
-            response += `   📝 ${t.kategori || 'Umum'}\n\n`;
+            response += `   📝 ${t.kategori || 'Umum'}\n`;
+            response += `   💭 ${t.catatan || 'Tidak ada catatan'}\n\n`;
         });
 
         await msg.reply(response);
@@ -189,9 +185,12 @@ client.on('message', async (msg) => {
 client.on('message', async (msg) => {
     console.log('📩 Pesan diterima:', msg.body);
 
+    try {
     const text = msg.body.toLowerCase();
     const nomor = msg.from.split('@')[0]; // Get sender's number
     const waktu = new Date().toISOString(); // Get current timestamp
+
+    const maxLength = 100
 
      // Tangani perintah khusus dulu
      if (text === 'total') {
@@ -207,10 +206,15 @@ client.on('message', async (msg) => {
                 totalPengeluaran += row.jumlah;
             }
         });
+
+
     
         const saldo = totalPemasukan - totalPengeluaran;
-    
-        const ringkasanUrl = `http://localhost:3000/api/ringkasan/${nomor}`;
+        const randomId = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+        if (!global.userUrls) global.userUrls = {};
+        global.userUrls[randomId] = nomor;
+        
+        const ringkasanUrl = `http://localhost:3000/ringkasan/${randomId}/${nomor}`;
     
         await msg.reply(
             `📊 *Ringkasan Transaksi*\n\n` +
@@ -219,6 +223,11 @@ client.on('message', async (msg) => {
             `💰 Saldo: Rp${saldo.toLocaleString('id-ID')}\n\n` +
             `🔗 Lihat ringkasan transaksi lengkap: ${ringkasanUrl}`
         );
+    }
+
+    else if (text.length > maxLength) {
+        console.log('Pesan terlalu panjang, abaikan.');
+        return;
     }
 
 
@@ -288,6 +297,9 @@ client.on('message', async (msg) => {
                 `💰 Nominal: Rp${jumlah.toLocaleString('id-ID')}`
             );
         } 
+    }
+    } catch (error) {
+        console.error('Error processing message:', error);
     }
     });
 

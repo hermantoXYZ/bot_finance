@@ -5,8 +5,6 @@ const path = require('path');
 const db = require('../db');
 
 
-app.use(express.json()); 
-
 router.patch('/edit/:id', (req, res) => {
     const id = req.params.id;
     const { tipe, jumlah, kategori, catatan } = req.body;
@@ -20,7 +18,7 @@ router.patch('/edit/:id', (req, res) => {
         const result = stmt.run(tipe, jumlah, kategori, catatan, id);
 
         if (result.changes === 0) {
-            return res.status(404).send('Transaksi tidak ditemukan');
+            return res.status(404).send('Transaksiss tidak ditemukan');
         }
 
         res.sendStatus(200);
@@ -30,12 +28,16 @@ router.patch('/edit/:id', (req, res) => {
     }
 });
 
-router.get('/:nomor', (req, res) => {
-    const nomor = req.params.nomor;
+router.get('/:randomId/:nomor',  (req, res) => {
+    const { randomId, nomor } = req.params;
     const transaksi = db.prepare(`SELECT * FROM transaksi WHERE nomor = ? ORDER BY waktu DESC`).all(nomor);
 
     if (transaksi.length === 0) {
-        return res.status(404).send('Transaksi tidak ditemukan');
+        return res.status(404).send('Transakssi tidak ditemukan');
+    }
+
+    if (!global.userUrls || global.userUrls[randomId] !== nomor) {
+        return res.status(401).send('Akses tidak valid. URL tidak dikenali.');
     }
 
     let totalPemasukan = 0;
@@ -53,7 +55,7 @@ router.get('/:nomor', (req, res) => {
     // Generate transaction rows HTML
     const transaksiRows = transaksi.map(row => `
         <tr>
-            <td>${row.tipe}</td>
+            <td><span class="badge badge-pemasukan">${row.tipe}</span></td>
             <td>${row.kategori}</td>
             <td>Rp ${row.jumlah}</td>
             <td>${new Date(row.waktu).toLocaleString()}</td>

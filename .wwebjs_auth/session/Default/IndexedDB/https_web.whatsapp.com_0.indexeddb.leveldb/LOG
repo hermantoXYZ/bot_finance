@@ -1,27 +1,28 @@
-2025/04/19-00:06:11.794 66d8 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/04/19-00:06:11.795 66d8 Recovering log #1210
-2025/04/19-00:06:11.823 66d8 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001210.log 
-2025/04/19-00:06:16.027 6130 Level-0 table #1222: started
-2025/04/19-00:06:16.039 6130 Level-0 table #1222: 177618 bytes OK
-2025/04/19-00:06:16.040 6130 Delete type=0 #1210
-2025/04/19-00:06:16.044 6130 Manual compaction at level-0 from '\x00Z\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00[\x00\x00\x00' @ 0 : 0; will stop at (end)
-2025/04/19-00:06:19.031 4830 Compacting 1@1 + 8@2 files
-2025/04/19-00:06:19.208 4830 Generated table #1223@1: 87436 keys, 2236171 bytes
-2025/04/19-00:06:19.330 4830 Generated table #1224@1: 37026 keys, 2216778 bytes
-2025/04/19-00:06:19.456 4830 Generated table #1225@1: 36349 keys, 2197153 bytes
-2025/04/19-00:06:19.496 4830 Generated table #1226@1: 7805 keys, 2162549 bytes
-2025/04/19-00:06:19.565 4830 Generated table #1227@1: 21855 keys, 2167428 bytes
-2025/04/19-00:06:19.687 4830 Generated table #1228@1: 60216 keys, 2196807 bytes
-2025/04/19-00:06:19.831 4830 Generated table #1229@1: 113467 keys, 2268648 bytes
-2025/04/19-00:06:19.935 4830 Generated table #1230@1: 75283 keys, 1502795 bytes
-2025/04/19-00:06:19.935 4830 Compacted 1@1 + 8@2 files => 16948329 bytes
-2025/04/19-00:06:19.936 4830 compacted to: files[ 0 0 8 0 0 0 0 ]
-2025/04/19-00:06:19.936 4830 Delete type=2 #1212
-2025/04/19-00:06:19.936 4830 Delete type=2 #1213
-2025/04/19-00:06:19.936 4830 Delete type=2 #1214
-2025/04/19-00:06:19.936 4830 Delete type=2 #1215
-2025/04/19-00:06:19.936 4830 Delete type=2 #1216
-2025/04/19-00:06:19.936 4830 Delete type=2 #1217
-2025/04/19-00:06:19.937 4830 Delete type=2 #1218
-2025/04/19-00:06:19.937 4830 Delete type=2 #1219
-2025/04/19-00:06:19.937 4830 Delete type=2 #1222
+2025/04/19-15:16:07.667 68a0 Reusing MANIFEST D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/04/19-15:16:07.667 68a0 Recovering log #1588
+2025/04/19-15:16:07.879 68a0 Reusing old log D:\REACT NATIVE\DJANGO\bot_financial\.wwebjs_auth\session\Default\IndexedDB\https_web.whatsapp.com_0.indexeddb.leveldb/001588.log 
+2025/04/19-15:16:10.368 68a0 Level-0 table #1600: started
+2025/04/19-15:16:10.413 68a0 Level-0 table #1600: 1175769 bytes OK
+2025/04/19-15:16:10.415 68a0 Delete type=0 #1588
+2025/04/19-15:16:10.415 68a0 Manual compaction at level-0 from '\x00o\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00p\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/04/19-15:16:14.190 3b18 Compacting 1@1 + 8@2 files
+2025/04/19-15:16:14.467 3b18 Generated table #1601@1: 88721 keys, 2238306 bytes
+2025/04/19-15:16:14.575 3b18 Generated table #1602@1: 62940 keys, 2251022 bytes
+2025/04/19-15:16:14.689 3b18 Generated table #1603@1: 39867 keys, 2196684 bytes
+2025/04/19-15:16:14.734 3b18 Generated table #1604@1: 10059 keys, 2156647 bytes
+2025/04/19-15:16:15.029 3b18 Generated table #1605@1: 30888 keys, 2209517 bytes
+2025/04/19-15:16:15.103 3b18 Generated table #1606@1: 21860 keys, 2143484 bytes
+2025/04/19-15:16:15.316 3b18 Generated table #1607@1: 113246 keys, 2268335 bytes
+2025/04/19-15:16:15.523 3b18 Generated table #1608@1: 113281 keys, 2267615 bytes
+2025/04/19-15:16:15.542 3b18 Generated table #1609@1: 8087 keys, 161008 bytes
+2025/04/19-15:16:15.542 3b18 Compacted 1@1 + 8@2 files => 17892618 bytes
+2025/04/19-15:16:15.544 3b18 compacted to: files[ 0 0 9 0 0 0 0 ]
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1590
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1591
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1592
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1593
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1594
+2025/04/19-15:16:15.544 3b18 Delete type=2 #1595
+2025/04/19-15:16:15.545 3b18 Delete type=2 #1596
+2025/04/19-15:16:15.545 3b18 Delete type=2 #1597
+2025/04/19-15:16:15.545 3b18 Delete type=2 #1600
